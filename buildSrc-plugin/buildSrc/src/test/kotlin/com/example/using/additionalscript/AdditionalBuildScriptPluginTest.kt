@@ -1,15 +1,15 @@
-package com.example
+package com.example.using.additionalscript
 
 import org.gradle.testfixtures.ProjectBuilder
 import org.junit.jupiter.api.Test
 
-class MyPluginTest {
+class AdditionalBuildScriptPluginTest {
     @Test
     fun `basic ProjectBuilder setup`() {
         val project = ProjectBuilder.builder().build()
 
         with(project.pluginManager ) {
-            apply("plugin-id")
+            apply("additional-build-script-id")
         }
 
     }

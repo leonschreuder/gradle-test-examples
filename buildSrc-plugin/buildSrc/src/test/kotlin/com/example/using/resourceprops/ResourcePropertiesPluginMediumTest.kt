@@ -1,4 +1,4 @@
-package com.example
+package com.example.using.resourceprops
 
 import org.assertj.core.api.Assertions.assertThat
 import org.gradle.testkit.runner.GradleRunner
@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.io.TempDir
 import java.io.File
 
-class MyPluginMediumTest {
+class ResourcePropertiesPluginMediumTest {
     @TempDir
     lateinit var testProjectDir: File
 
@@ -17,7 +17,8 @@ class MyPluginMediumTest {
         buildFile.writeText(
             """
             plugins {
-                id("plugin-id")
+                `java-library`
+                id("resource-properties-id")
             }
             """.trimIndent()
         )
@@ -29,6 +30,6 @@ class MyPluginMediumTest {
             .withArguments("assemble")
             .build()
 
-        assertThat(result.output).contains("Plugin class com.example.MyPlugin applied")
+        assertThat(result.output).contains("Plugin ${ResourcePropertiesPlugin::class.java.simpleName} applied")
     }
 }
